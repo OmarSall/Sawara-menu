@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Tło dynamiczne -->
+<div class="background">
+    <div class="background-layer"></div> <!-- Pierwsza warstwa tła -->
+    <div class="background-layer"></div> <!-- Druga warstwa tła -->
+</div>
+
+<div class="text-center">
+    <div class="title-box">
+        <h1>Witaj w Sawara Gyros</h1>
+
+    <p>Zapraszamy do naszego menu online</p>
+    <a href="/menu" class="btn btn-primary">Przejdź do menu</a>
+    </div>
+</div>
+
+<!-- Skrypt do zmiany tła -->
+{% if background_script %}
+ <script>
+    const images = [
+        "/static/images/IMG_6568.jpg",
+        "/static/images/IMG_6498.jpg",
+        "/static/images/IMG_6473.jpg",
+        "/static/images/IMG_6381.jpg",
+        "/static/images/IMG_6321.jpg",
+        "/static/images/IMG_6312.jpg",
+        "/static/images/IMG_6276.jpg",
+        "/static/images/IMG_6430.jpg",
+        "/static/images/IMG_6434.jpg",
+        "/static/images/IMG_6507.jpg",
+        "/static/images/IMG_6520.jpg",
+    ]
+
+    let index = 0;
+    const layers = document.querySelectorAll('.background-layer');
+
+ //  **Początkowa konfiguracja – bez "mignięcia"**
+layers[0].style.backgroundImage = `url(${images[0]})`;
+layers[0].classList.add('show');  // Pierwsza warstwa widoczna
+layers[1].style.backgroundImage = `url(${images[1]})`;
+layers[1].classList.add('hide');  // Druga warstwa ukryta
+
+function changeBackground() {
+    // Wyznaczamy warstwy: aktywna (widoczna) i nowa (do zmiany)
+    let activeLayer = layers[index % 2];      // Aktywna warstwa (widoczna)
+    let newLayer = layers[(index + 1) % 2];   // Nowa warstwa (następne zdjęcie)
+
+    // **Najpierw ustawiamy nowe zdjęcie!**
+    newLayer.style.backgroundImage = `url(${images[(index + 1) % images.length]})`;
+
+    // **Zmieniamy klasy, aby rozpocząć płynne przejście**
+    newLayer.classList.add('show');
+    newLayer.classList.remove('hide');
+
+    // **Po animacji ukrywamy poprzednią warstwę**
+    setTimeout(() => {
+        activeLayer.classList.remove('show');
+        activeLayer.classList.add('hide');
+    }, 1000);  // Czas przejścia (dopasowany do CSS)
+
+    // **Zmieniamy indeks na kolejne zdjęcie**
+    index = (index + 1) % images.length;
+}
+
+//  Uruchamiamy zmianę tła co 5 sekund
+setInterval(changeBackground, 5000);
+
+
+
+ </script>
+{% endif %}
+{% endblock %}

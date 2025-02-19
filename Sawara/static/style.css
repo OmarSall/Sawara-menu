@@ -1,0 +1,380 @@
+:root {
+    --main-color: #ecf0f1;
+    --point-color: #555;
+    --size: 5px;
+  }
+
+  .loader {
+    background-color: var(--main-color);
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    z-index: 100000;
+  }
+
+  .loader__element {
+    border-radius: 100%;
+    border: var(--size) solid var(--point-color);
+    margin: calc(var(--size)*2);
+  }
+
+  .loader__element:nth-child(1) {
+    animation: preloader .6s ease-in-out alternate infinite;
+  }
+  .loader__element:nth-child(2) {
+    animation: preloader .6s ease-in-out alternate .2s infinite;
+  }
+
+  .loader__element:nth-child(3) {
+    animation: preloader .6s ease-in-out alternate .4s infinite;
+  }
+
+  @keyframes preloader {
+    100% { transform: scale(2); }
+  }
+
+
+
+body {
+    background-color: rgba(253, 182, 88, 0.763); /* Cream-colored background */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Minimalna wysokość strony na 100% */
+}
+
+/* Wrapper – obejmuje całą stronę */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Minimum 100% wysokości ekranu */
+    flex-grow: 1; /* Rozciąga stronę, aby wypełniała całą dostępną przestrzeń */
+}
+
+main {
+    flex-grow: 1; /* Sprawia, że główny kontener wypełnia dostępną przestrzeń */
+}
+
+
+h1 {
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 1); /* jasny cień */
+}
+
+
+p {
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 1); /* jasny cień */
+    font-weight: bold;
+}
+
+.title-box {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid rgba(30, 144, 255, 0.5); /* Delikatny niebieski */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2); /* Półprzezroczyste tło */
+    backdrop-filter: blur(5px); /* Subtelne rozmycie tła */
+}
+
+.red-text {
+    color: red;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Wysokość ekranu */
+    overflow: hidden;
+    z-index: -1; /* Tło za wszystkimi innymi elementami */
+}
+
+.background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 2s ease-in-out;
+    opacity: 0; /* Początkowo niewidoczne */
+    filter: brightness(1) contrast(1); /* Zapewniamy pełną jasność i kontrast zdjęcia */
+}
+
+
+/* Warstwa, która jest widoczna */
+.background-layer.show {
+    opacity: 1;
+    z-index: 2; /* Ustawiamy warstwę na widoczną */
+}
+
+/* Warstwa, która jest ukryta */
+.background-layer.hide {
+    opacity: 0;
+    z-index: 1; /* Ukrywamy warstwę */
+}
+
+/* Stylowanie treści */
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    flex: 1; /* Rozciąga się, aby wypełnić całą dostępną przestrzeń */
+}
+
+
+/* Ukrywanie opisu na początku */
+.menu-item .desc-container {
+    display: none; /* Zamiast bezpośrednio na .desc, ukrywamy cały kontener */
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    bottom: 10px;
+    left: 22px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px;
+    border-radius: 5px;
+    width: 90%;
+    box-sizing: border-box;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Pokaż opis tylko po najechaniu */
+.menu-item:hover .desc-container {
+    display: block;
+}
+
+/* Opcjonalne dodatkowe style dla list i tagów */
+.menu-item .desc ul {
+    padding-left: 0px;
+    list-style-type: disc;
+    margin: 5px 0;
+}
+
+.menu-item .desc strong {
+    font-weight: bold;
+    color: red; /* Wyróżnienie */
+}
+
+.menu-item .desc ins {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.menu-item .description {
+    position: absolute;
+    text-align: center;  /* Środkowanie tekstu */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+
+.menu-item img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    width: auto;
+
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: center;
+    z-index: 1; /* Zapobiega przykrywaniu tekstu */
+}
+
+
+.menu-item:hover img {
+
+    transform: scale(1.1);
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 10px 20px  rgba(0, 0, 0, 0.3); /* Dodaje cień */
+}
+
+.menu-item:hover .description {
+    opacity: 1;
+    position: center;
+    text-align: center;  /* Środkowanie tekstu */
+}
+
+.menu-item {
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Powiększenie nazwy dania */
+.menu-item h5 {
+    font-size: 1.5em; /* Zwiększony rozmiar czcionki */
+    font-weight: bold;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2; /* Zapewnia, że tekst jest zawsze na wierzchu */
+}
+
+
+
+ul {
+    text-align: center; /* Centrowanie tekstu w li */
+    list-style-position: inside; /* Zapewnia, że punktory są wewnątrz */
+    list-style-position: inside; /* Przesuwa znaczniki listy (kropki, ikony) do wewnątrz */
+}
+
+.menu-description li {
+    margin-left: -24px;
+}
+
+.custom-btn {
+    background-color: #ff6a00; /* Pomarańczowy */
+    color: black; /* Tekst biały */
+    border: none; /* Usunięcie obramowania */
+    padding: 10px 20px; /* Dostosowanie odstępów */
+    border-radius: 5px; /* Zaokrąglenie */
+}
+
+.custom-btn:hover {
+    background-color: #cc5500; /* Ciemniejszy pomarańczowy po najechaniu */
+}
+
+
+.navbar {
+    margin-bottom: 20px;
+    background: #1047ab;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 0px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2em;  /* Increase font size */
+    font-weight: bold; /* Make it bold for better visibility */
+    padding: 10px 15px; /* Add spacing for better touch experience */
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #cc5500; /* Optional: Change color on hover */
+}
+
+
+.menu-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    position: relative;  /* Umożliwia poprawne nałożenie z-index */
+    overflow: hidden;    /* Zapobiega przesuwaniu elementów obok */
+    padding: 15px;
+    background: white;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;  /* Default z-index */
+}
+
+
+
+.menu-item:hover {
+    transform: scale(1.05);
+    background: #ffc1a2b9;
+    z-index: 10;  /* Bring it to the front */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
+}
+
+.price {
+    font-weight: bold;
+    color: #d9534f;
+    font-size: 1.2em;
+}
+
+/* Stopka */
+.footer {
+    background: #1046aba8;
+    color: white;
+    padding: 0px 10px;
+    width: 100%;
+    /* Pozycjonowanie na dole */
+    text-align: center;
+    position: relative;
+}
+
+/* Kontener w stopce */
+.footer-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: white;
+    position: relative;
+}
+
+.footer-image {
+    width: 0px; /* Dostosuj szerokość */
+    height: 0px;
+    transition: all 0.3s ease-in-out; /* Płynna zmiana wielkości */
+}
+
+.footer-image.left {
+    align-self: flex-start;
+    width: 0px; /* Dopasuj rozmiar */
+    height: 0px;
+}
+
+.footer-image.right {
+    align-self: flex-start;
+    width: auto; /* Dopasuj rozmiar */
+    height: auto;
+}
+
+
+.social-icons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 15px;
+    width: 30px;
+    height: 30px;
+}
+
+.social-icons a svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect */
+.social-icons a:hover svg {
+    transform: scale(1.1);
+}

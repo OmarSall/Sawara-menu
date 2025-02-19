@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SAWARA MENU</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- https://favicon.io/emoji-favicons/ -->
+    <link href="/static/images/favicon.ico" rel="icon">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+</head>
+<body>
+
+    <div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <input alt="Validate" src="/static/images/logo.png" type="image">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- <img src="/static/images/ozdoba.jpg" alt="Left Image" class="footer-image left"> -->
+            <div class="footer-text">
+            <a href="https://sawara-gyros.pl/" target="_blank" rel="noopener noreferrer">
+                <img src="/static/images/logo.png" alt="">
+            </a>
+
+                <div>&copy; 2025 Sawara Gyros. All Rights Reserved.</div>
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/sawaragyros/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#1877F2">
+                            <path d="M22.675 0h-21.35C.596 0 0 .596 0 1.326v21.348C0 23.404.596 24 1.326 24H12.82v-9.294H9.692V11.08h3.128V8.432c0-3.1 1.893-4.788 4.66-4.788 1.324 0 2.462.099 2.794.143v3.24l-1.918.001c-1.504 0-1.793.715-1.793 1.765v2.312h3.586l-.467 3.626h-3.12V24h6.116c.73 0 1.326-.596 1.326-1.326V1.326C24 .596 23.404 0 22.675 0z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/sawara_gyros/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <linearGradient id="instaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#fccc63;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#f55555;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#bc2a8d;stop-opacity:1" />
+                            </linearGradient>
+                            <path fill="url(#instaGradient)" d="M12 2.163c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.148 3.227-1.667 4.771-4.919 4.919-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-3.252-.148-4.771-1.691-4.919-4.919C2.175 14.584 2.163 14.204 2.163 12s.012-3.584.07-4.849C2.381 3.924 3.9 2.381 7.152 2.233 8.417 2.175 8.797 2.163 12 2.163zm0-2.163C8.74 0 8.332.012 7.052.07 2.956.249.249 2.956.07 7.052.012 8.332 0 8.74 0 12s.012 3.668.07 4.948c.179 4.096 2.886 6.803 6.982 6.982C8.332 23.988 8.74 24 12 24s3.668-.012 4.948-.07c4.096-.179 6.803-2.886 6.982-6.982.058-1.28.07-1.688.07-4.948s-.012-3.668-.07-4.948c-.179-4.096-2.886-6.803-6.982-6.982C15.668.012 15.26 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Twitter (Now X) -->
+                    <a href="https://twitter.com" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="black">
+                            <path d="M23.643 4.937c-.835.37-1.73.617-2.675.73.96-.575 1.695-1.49 2.043-2.578-.898.53-1.892.917-2.949 1.126-.85-.904-2.065-1.47-3.404-1.47-2.575 0-4.66 2.085-4.66 4.66 0 .366.042.72.122 1.062-3.872-.194-7.306-2.05-9.6-4.87-.4.69-.63 1.49-.63 2.35 0 1.622.826 3.05 2.083 3.89-.77-.025-1.495-.237-2.126-.588v.06c0 2.267 1.61 4.158 3.74 4.59-.392.107-.805.163-1.23.163-.3 0-.593-.028-.878-.08.593 1.85 2.313 3.2 4.348 3.23-1.59 1.25-3.59 1.98-5.77 1.98-.37 0-.73-.022-1.09-.065 2.06 1.32 4.5 2.09 7.13 2.09 8.556 0 13.232-7.09 13.232-13.232 0-.202-.004-.403-.013-.603.91-.656 1.698-1.474 2.32-2.41z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+               <!-- <img src="/static/images/ozdoba.jpg" alt="Right Image" class="footer-image right"> -->
+
+    </div>
+
+    </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
